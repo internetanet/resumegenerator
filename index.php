@@ -3,7 +3,7 @@ header('Content-Type: text/html; charset = utf-8');
 error_reporting(E_ALL);
 mb_internal_encoding("UTF-8");
 
-///////////////////////////////////функция вывода уведомлений
+//вывод уведомлений
 function notification($msg, $param = 2) {
   if ($param == 1) {
     $show = '<div class="message-green"><span class="message-text">'.$msg.'</span></div>';//зеленый фон. успешн.
@@ -16,25 +16,14 @@ function notification($msg, $param = 2) {
   }
   echo $show.'<br>';
 }
-//////////////////////////////////////////////////////////////
+//
 ?>
 
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <!-- Yandex.Metrika counter -->
-<script type="text/javascript" >
-   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-   ym(67703959, "init", {
-        clickmap:true,
-        trackLinks:true,
-        accurateTrackBounce:true
-   });
-</script>
 <noscript><div><img src="https://mc.yandex.ru/watch/67703959" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
   <title>Генератор резюме</title>
@@ -165,7 +154,7 @@ img{
 <div class="wrap">
 
 <?php
-//////////////определяем переменные на полученные с формы данные, фильтруем
+//////////////определение переменных на полученные с формы данные, фильтруем
 $usersurname = (isset($_POST['surname'])) ? htmlspecialchars(trim($_POST['surname'])) : ''; //фамилия
 $username = (isset($_POST['name'])) ? htmlspecialchars(trim($_POST['name'])) : ''; //имя
 $patronymic = (isset($_POST['patronymic'])) ? htmlspecialchars(trim($_POST['patronymic'])) : ''; //отчество
@@ -264,7 +253,7 @@ $opts = array('http' =>
  
 $context  = stream_context_create($opts);
  
-//Преобразовываем HTML в PDF посредством отправки данных методом POST в API с параметрами
+//Преобразование HTML в PDF посредством отправки данных методом POST в API с параметрами
 $result = file_get_contents('http://api.pdf4b.ru/pdf', false, $context);
  
 //Сохраняем полученный файл на сервере
